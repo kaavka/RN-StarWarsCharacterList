@@ -5,7 +5,7 @@ import CharacterScreen from '../screens/CharacterScreen/CharacterScreen';
 
 const Stack = createNativeStackNavigator();
 
-const AppStack = () => {
+export const AppStack = () => {
   return (
     <SafeAreaView>
       <Stack.Screen name="Home" component={HomeScreen} />
@@ -13,5 +13,3 @@ const AppStack = () => {
     </SafeAreaView>
   );
 };
-
-export default AppStack;
