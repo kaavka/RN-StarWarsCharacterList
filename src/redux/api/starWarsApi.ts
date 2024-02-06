@@ -1,15 +1,17 @@
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query';
-import {Person} from '../../types/Person';
+import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
+import {ApiResponse} from '../../types/ApiResponse';
 
 export const starWarsApi = createApi({
   reducerPath: 'starWarsApi',
   baseQuery: fetchBaseQuery({baseUrl: 'https://swapi.dev/api/'}),
   endpoints: builder => ({
-    getAllCharacters: builder.query<Person[], void>({
+    getAllCharacters: builder.query<ApiResponse, void>({
       query: () => 'people/',
     }),
-    getCharacterById: builder.query<Person, string>({
+    getCharacterById: builder.query<ApiResponse, string>({
       query: id => `people/${id}`,
     }),
   }),
 });
+
+export const {useGetAllCharactersQuery, useGetCharacterByIdQuery} = starWarsApi;
