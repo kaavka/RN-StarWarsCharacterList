@@ -1,8 +1,6 @@
-import {Person} from './Person';
-
-export type ApiResponse = {
+export type ApiResponse<T> = {
   count: number;
   next: string | null;
   previous: string | null;
-  results: Person[];
+  results: T;
 };

@@ -1,4 +1,7 @@
-export type Person = {
+import {Planet} from './Planet';
+import {Species} from './Species';
+
+export interface Person {
   name: string; // The name of this person.
   birth_year: string; // The birth year of the person, using the in-universe standard of BBY or ABY - Before the Battle of Yavin or After the Battle of Yavin. The Battle of Yavin is a battle that occurs at the end of Star Wars episode IV: A New Hope.
   eye_color: string; // The eye color of this person. Will be "unknown" if not known or "n/a" if the person does not have an eye.
@@ -15,4 +18,5 @@ export type Person = {
   url: string; // the hypermedia URL of this resource.
   created: string; // the ISO 8601 date format of the time that this resource was created.
   edited: string; // the ISO 8601 date format of the time that this resource was
-};
+  [key: string]: string | string[];
+}
