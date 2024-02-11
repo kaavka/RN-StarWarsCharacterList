@@ -18,9 +18,9 @@ export const styles = StyleSheet.create({
     padding: 20,
   },
   search: {
-    marginBottom: 20,
+    marginBottom: 15,
   },
   pagination: {
-    marginTop: 20,
+    marginTop: 15,
   },
 });
