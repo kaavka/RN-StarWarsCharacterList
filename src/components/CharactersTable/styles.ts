@@ -65,13 +65,9 @@ export const styles = StyleSheet.create({
   header_container_regular: {
     ...HEADER_BASE,
     flex: CONTAINER_FLEX_REGULAR,
-    borderRightWidth: 1,
-    borderColor: COLORS.black,
   },
   header_container_big: {
     ...HEADER_BASE,
     flex: CONTAINER_FLEX_BIG,
-    borderRightWidth: 1,
-    borderColor: COLORS.black,
   },
 });
