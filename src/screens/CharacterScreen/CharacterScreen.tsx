@@ -18,8 +18,6 @@ const PersonComponent: React.FC<CharacterScreenProps> = ({route}) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{character.name}</Text>
-      <View style={styles.separator} />
       <View style={styles.row}>
         <Text style={styles.label}>Birth Year:</Text>
         <Text style={styles.value}>{character.birth_year}</Text>

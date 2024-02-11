@@ -21,7 +21,6 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 3,
     borderColor: COLORS.black,
-    flex: 1,
     marginBottom: 10,
   },
   scrollContainer: {
@@ -40,7 +39,7 @@ export const styles = StyleSheet.create({
   error: {
     flexGrow: 1,
     justifyContent: 'center',
-    color: '#ff0000',
+    color: COLORS.red,
     borderBottomWidth: 1,
     textAlign: 'center',
     paddingVertical: 10,

@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView, View} from 'react-native';
+import {ScrollView, Text, TouchableOpacity, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -13,6 +13,8 @@ import {CharactersTable} from '../../components/CharactersTable/CharactersTable'
 import FansViwer from '../../components/FansViwer/FansViwer';
 import {filterCharacters} from './utils/helpers';
 import {LoadingIndicator} from '../../components/LoadingIndicator/LoadingIndicator';
+import {clearAllFans} from '../../redux/features/fansSlice';
+import {useAppDispatch} from '../../redux/hooks/useAppDispatch';
 
 type HomeScreenRouteProp = RouteProp<AppStackParamList, 'Home'>;
 type HomeScreenNavigationProp = NativeStackNavigationProp<
@@ -33,6 +35,12 @@ const HomeScreen: React.FC<HomeScreenProps> = ({route, navigation}) => {
 
   const isNextPageDisabled = data?.next === null;
   const isPreviousPageDisabled = data?.previous === null;
+
+  const dispatch = useAppDispatch();
+
+  const handleClearAllFans = () => {
+    dispatch(clearAllFans());
+  };
 
   const navigateToCharacterScreen = (character: Person) => {
     navigation.navigate('CharacterScreen', {character});
@@ -56,6 +64,14 @@ const HomeScreen: React.FC<HomeScreenProps> = ({route, navigation}) => {
         style={styles.scroll_container}
         contentContainerStyle={styles.scroll_container_content}>
         <View style={styles.container}>
+          <View style={styles.fansContainer}>
+            <Text style={styles.fansText}>Fans</Text>
+            <TouchableOpacity
+              onPress={handleClearAllFans}
+              style={styles.clearButton}>
+              <Text style={styles.clearButtonText}>Clear All</Text>
+            </TouchableOpacity>
+          </View>
           <FansViwer />
           <View style={styles.card_container}>
             <View style={styles.search}>

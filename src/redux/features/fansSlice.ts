@@ -53,9 +53,14 @@ export const fansSlice = createSlice({
         payload: {category, name},
       }),
     },
+    clearAllFans: state => {
+      state.maleFans = [];
+      state.femaleFans = [];
+      state.otherFans = [];
+    },
   },
 });
 
-export const {addFan, removeFan} = fansSlice.actions;
+export const {addFan, removeFan, clearAllFans} = fansSlice.actions;
 
 export default fansSlice.reducer;
