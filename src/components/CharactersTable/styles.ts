@@ -14,6 +14,8 @@ const CELL_BASE: TextStyle = {
 const HEADER_BASE: TextStyle = {
   ...CELL_BASE,
   fontWeight: 'bold',
+  borderRightWidth: 1,
+  borderColor: COLORS.black,
 };
 
 export const styles = StyleSheet.create({
@@ -59,8 +61,6 @@ export const styles = StyleSheet.create({
   header_container_small: {
     ...HEADER_BASE,
     flex: CONTAINER_FLEX_SMALL,
-    borderRightWidth: 1,
-    borderColor: COLORS.black,
   },
   header_container_regular: {
     ...HEADER_BASE,
