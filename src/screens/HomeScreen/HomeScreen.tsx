@@ -57,28 +57,30 @@ const HomeScreen: React.FC<HomeScreenProps> = ({route, navigation}) => {
         contentContainerStyle={styles.scroll_container_content}>
         <View style={styles.container}>
           <FansViwer />
-          <View style={styles.search}>
-            <SearchInput applyQuery={applySearch} />
-          </View>
+          <View style={styles.card_container}>
+            <View style={styles.search}>
+              <SearchInput applyQuery={applySearch} />
+            </View>
 
-          {isFetching ? (
-            <LoadingIndicator />
-          ) : (
-            <CharactersTable
-              characters={displayedCharacters}
-              navigateToCharacterScreen={navigateToCharacterScreen}
-            />
-          )}
+            {isFetching ? (
+              <LoadingIndicator />
+            ) : (
+              <CharactersTable
+                characters={displayedCharacters}
+                navigateToCharacterScreen={navigateToCharacterScreen}
+              />
+            )}
 
-          <View style={styles.pagination}>
-            <Pagination
-              isNextPageDisabled={isNextPageDisabled}
-              isPreviousPageDisabled={isPreviousPageDisabled}
-              nextPageFunction={nextPage}
-              previousPageFunction={previousPage}
-              totalItems={data?.count || 0}
-              currentPage={page}
-            />
+            <View style={styles.pagination}>
+              <Pagination
+                isNextPageDisabled={isNextPageDisabled}
+                isPreviousPageDisabled={isPreviousPageDisabled}
+                nextPageFunction={nextPage}
+                previousPageFunction={previousPage}
+                totalItems={data?.count || 0}
+                currentPage={page}
+              />
+            </View>
           </View>
         </View>
       </ScrollView>

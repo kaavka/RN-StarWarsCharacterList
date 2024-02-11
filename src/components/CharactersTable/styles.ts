@@ -24,6 +24,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     marginBottom: 10,
   },
+  scrollContainer: {
+    flexGrow: 1,
+    flexDirection: 'column',
+  },
   row: {
     borderBottomWidth: 1,
     flexDirection: 'row',

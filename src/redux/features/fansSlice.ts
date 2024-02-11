@@ -13,7 +13,7 @@ const initialState: FansState = {
   otherFans: [],
 };
 
-const fansSlice = createSlice({
+export const fansSlice = createSlice({
   name: 'fans',
   initialState,
   reducers: {

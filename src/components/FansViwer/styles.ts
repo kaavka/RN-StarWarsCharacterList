@@ -11,8 +11,6 @@ export const styles = StyleSheet.create({
     padding: 5,
     elevation: 5,
     minWidth: 110,
-    marginTop: 5,
-    marginBottom: 10,
     marginHorizontal: 5,
     alignItems: 'center',
     flex: 1,

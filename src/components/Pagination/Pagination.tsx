@@ -30,16 +30,16 @@ export const Pagination = ({
 
   return (
     <View style={styles.pagination}>
-      <ArrowButton
-        direction="left"
-        onTouch={previousPageFunction}
-        isDisabled={isPreviousPageDisabled}
-      />
       <Text>
         {`${String(firstItemNumber)} - ${String(lastItemNumber)} of ${String(
           totalItems || 0,
         )}`}
       </Text>
+      <ArrowButton
+        direction="left"
+        onTouch={previousPageFunction}
+        isDisabled={isPreviousPageDisabled}
+      />
       <ArrowButton
         direction="right"
         onTouch={nextPageFunction}

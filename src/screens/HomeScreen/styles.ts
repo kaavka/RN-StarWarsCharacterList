@@ -1,26 +1,33 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from '../../utils/constants';
 
 export const styles = StyleSheet.create({
   safe_container: {
     flex: 1,
-    backgroundColor: COLORS.white,
   },
   scroll_container: {
     flex: 1,
   },
   scroll_container_content: {
     flexGrow: 1,
-    paddingBottom: 20, // Adjust as needed
+    paddingBottom: 20,
   },
   container: {
     flex: 1,
     padding: 20,
   },
+  card_container: {
+    flexGrow: 1,
+    backgroundColor: '#ffffff',
+    borderRadius: 10,
+    padding: 10,
+    marginVertical: 10,
+    elevation: 2,
+  },
   search: {
-    marginBottom: 15,
+    marginBottom: 10,
   },
   pagination: {
-    marginTop: 15,
+    alignItems: 'flex-end',
+    marginTop: 10,
   },
 });
