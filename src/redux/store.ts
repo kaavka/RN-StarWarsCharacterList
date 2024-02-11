@@ -1,8 +1,10 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {starWarsApi} from './api/starWarsApi';
+import fansSlice from './features/fansSlice';
 
 const store = configureStore({
   reducer: {
+    fans: fansSlice,
     [starWarsApi.reducerPath]: starWarsApi.reducer,
   },
   middleware: getDefaultMiddleware =>

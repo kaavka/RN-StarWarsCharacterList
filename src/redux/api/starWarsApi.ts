@@ -14,9 +14,6 @@ export const starWarsApi = createApi({
     getCharacterById: builder.query<ApiResponse<Person>, string>({
       query: id => `people/${id}`,
     }),
-    getCharacterByName: builder.query<ApiResponse<Person[]>, string>({
-      query: name => ({url: '/people', params: {search: name}}),
-    }),
     getPlanetById: builder.query<ApiResponse<Planet>, string>({
       query: id => `planet/${id}`,
     }),

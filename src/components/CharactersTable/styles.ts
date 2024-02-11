@@ -1,45 +1,31 @@
-import {StyleSheet, TextStyle, ViewStyle} from 'react-native';
+import {StyleSheet, TextStyle} from 'react-native';
 import {COLORS} from '../../utils/constants';
 
-export const CONTAINER_FLEX_SMALL = 1;
-export const CONTAINER_FLEX_REGULAR = 2;
-export const CONTAINER_FLEX_BIG = 3;
+const CONTAINER_FLEX_SMALL = 1;
+const CONTAINER_FLEX_REGULAR = 2;
+const CONTAINER_FLEX_BIG = 3;
 
-export const CELL_BASIC: ViewStyle = {
-  flex: 1,
-  justifyContent: 'center',
-  margin: 10,
+const CELL_BASE: TextStyle = {
+  textAlign: 'center',
+  alignItems: 'center',
+  marginVertical: 10,
 };
 
-const DIVIDER: ViewStyle = {
-  borderRightWidth: 1,
-  borderRightColor: COLORS.black,
-};
-
-const HEADER_BASIC: TextStyle = {
+const HEADER_BASE: TextStyle = {
+  ...CELL_BASE,
   fontWeight: 'bold',
 };
 
 export const styles = StyleSheet.create({
   container: {
-    borderRightWidth: 1,
-    borderLeftWidth: 1,
-    borderTopWidth: 1,
+    borderWidth: 1,
     borderRadius: 3,
     borderColor: COLORS.black,
-  },
-  scroll_container: {
     flex: 1,
-  },
-  scroll_container_content: {
-    flex: 1,
-  },
-  body_container: {
-    flex: 1,
+    marginBottom: 10,
   },
   row: {
     borderBottomWidth: 1,
-    flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -47,34 +33,42 @@ export const styles = StyleSheet.create({
     width: 20,
     height: 20,
   },
+  error: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    color: '#ff0000',
+    borderBottomWidth: 1,
+    textAlign: 'center',
+    paddingVertical: 10,
+  },
   cell_container_small: {
-    ...CELL_BASIC,
+    ...CELL_BASE,
     flex: CONTAINER_FLEX_SMALL,
   },
   cell_container_regular: {
-    ...CELL_BASIC,
+    ...CELL_BASE,
     flex: CONTAINER_FLEX_REGULAR,
   },
   cell_container_big: {
-    ...CELL_BASIC,
+    ...CELL_BASE,
     flex: CONTAINER_FLEX_BIG,
   },
   header_container_small: {
-    ...HEADER_BASIC,
-    ...CELL_BASIC,
-    ...DIVIDER,
+    ...HEADER_BASE,
     flex: CONTAINER_FLEX_SMALL,
+    borderRightWidth: 1,
+    borderColor: COLORS.black,
   },
   header_container_regular: {
-    ...HEADER_BASIC,
-    ...CELL_BASIC,
-    ...DIVIDER,
+    ...HEADER_BASE,
     flex: CONTAINER_FLEX_REGULAR,
+    borderRightWidth: 1,
+    borderColor: COLORS.black,
   },
   header_container_big: {
-    ...HEADER_BASIC,
-    ...CELL_BASIC,
-    ...DIVIDER,
+    ...HEADER_BASE,
     flex: CONTAINER_FLEX_BIG,
+    borderRightWidth: 1,
+    borderColor: COLORS.black,
   },
 });

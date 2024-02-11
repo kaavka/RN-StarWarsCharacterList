@@ -1,5 +1,5 @@
-import {ScrollView, Text, View} from 'react-native';
-import {CharactersTable} from '../../components/CharactersTable/CharactersTable';
+import React from 'react';
+import {ScrollView, View} from 'react-native';
 import {SafeAreaView} from 'react-native-safe-area-context';
 import {RouteProp} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
@@ -9,8 +9,12 @@ import {Person} from '../../types/Person';
 import {styles} from './styles';
 import {Pagination} from '../../components/Pagination/Pagination';
 import {SearchInput} from '../../components/SearchInput/SearchInput';
+import {CharactersTable} from '../../components/CharactersTable/CharactersTable';
+import FansViwer from '../../components/FansViwer/FansViwer';
+import {filterCharacters} from './utils/helpers';
+import {LoadingIndicator} from '../../components/LoadingIndicator/LoadingIndicator';
 
-type HomeScreenRouteProp = RouteProp<{Home: {page: number}}, 'Home'>;
+type HomeScreenRouteProp = RouteProp<AppStackParamList, 'Home'>;
 type HomeScreenNavigationProp = NativeStackNavigationProp<
   AppStackParamList,
   'Home'
@@ -21,11 +25,13 @@ interface HomeScreenProps {
   navigation: HomeScreenNavigationProp;
 }
 
-const HomeScreen = ({route, navigation}: HomeScreenProps) => {
-  const {page = 1} = route.params;
+const HomeScreen: React.FC<HomeScreenProps> = ({route, navigation}) => {
+  const {page = 1, query} = route.params;
   const {data, isFetching} = useGetPageOfCharactersQuery(page);
 
-  const isNexPageDisabled = data?.next === null;
+  const displayedCharacters = filterCharacters(data?.results, query);
+
+  const isNextPageDisabled = data?.next === null;
   const isPreviousPageDisabled = data?.previous === null;
 
   const navigateToCharacterScreen = (character: Person) => {
@@ -33,15 +39,15 @@ const HomeScreen = ({route, navigation}: HomeScreenProps) => {
   };
 
   const nextPage = () => {
-    navigation.navigate('Home', {
-      page: page + 1,
-    });
+    navigation.navigate('Home', {page: page + 1});
   };
 
   const previousPage = () => {
-    navigation.navigate('Home', {
-      page: page - 1,
-    });
+    navigation.navigate('Home', {page: page - 1});
+  };
+
+  const applySearch = (search: string) => {
+    navigation.navigate('Home', {page, query: search});
   };
 
   return (
@@ -50,26 +56,27 @@ const HomeScreen = ({route, navigation}: HomeScreenProps) => {
         style={styles.scroll_container}
         contentContainerStyle={styles.scroll_container_content}>
         <View style={styles.container}>
+          <FansViwer />
           <View style={styles.search}>
-            <SearchInput />
+            <SearchInput applyQuery={applySearch} />
           </View>
 
           {isFetching ? (
-            <Text>Is Loading...</Text>
+            <LoadingIndicator />
           ) : (
             <CharactersTable
-              characters={data?.results as Person[]}
+              characters={displayedCharacters}
               navigateToCharacterScreen={navigateToCharacterScreen}
             />
           )}
 
           <View style={styles.pagination}>
             <Pagination
-              isNextPageDisabled={isNexPageDisabled}
-              isPreviousPageDisable={isPreviousPageDisabled}
+              isNextPageDisabled={isNextPageDisabled}
+              isPreviousPageDisabled={isPreviousPageDisabled}
               nextPageFunction={nextPage}
               previousPageFunction={previousPage}
-              totalItems={data?.count as number}
+              totalItems={data?.count || 0}
               currentPage={page}
             />
           </View>

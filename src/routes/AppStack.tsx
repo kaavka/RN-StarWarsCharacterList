@@ -4,7 +4,7 @@ import CharacterScreen from '../screens/CharacterScreen/CharacterScreen';
 import {Person} from '../types/Person';
 
 export type AppStackParamList = {
-  Home: {page: number};
+  Home: {page: number; query?: string};
   CharacterScreen: {character: Person};
 };
 

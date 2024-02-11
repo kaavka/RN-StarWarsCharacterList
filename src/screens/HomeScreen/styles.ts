@@ -5,14 +5,22 @@ export const styles = StyleSheet.create({
   safe_container: {
     flex: 1,
     backgroundColor: COLORS.white,
-    overflow: 'hidden',
+  },
+  scroll_container: {
+    flex: 1,
+  },
+  scroll_container_content: {
+    flexGrow: 1,
+    paddingBottom: 20, // Adjust as needed
   },
   container: {
     flex: 1,
-    padding: 10,
+    padding: 20,
   },
-  search: {},
+  search: {
+    marginBottom: 20,
+  },
   pagination: {
-    paddingTop: 20,
+    marginTop: 20,
   },
 });

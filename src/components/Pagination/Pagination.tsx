@@ -10,7 +10,7 @@ interface Props {
   nextPageFunction: () => void;
   isNextPageDisabled: boolean;
   previousPageFunction: () => void;
-  isPreviousPageDisable: boolean;
+  isPreviousPageDisabled: boolean;
 }
 
 export const Pagination = ({
@@ -19,7 +19,7 @@ export const Pagination = ({
   nextPageFunction,
   isNextPageDisabled,
   previousPageFunction,
-  isPreviousPageDisable,
+  isPreviousPageDisabled,
 }: Props) => {
   const firstItemNumber = getFirstPageItemNumber(ITEMS_PER_PAGE, currentPage);
   const lastItemNumber = getLastPagetItemNumber(
@@ -33,11 +33,11 @@ export const Pagination = ({
       <ArrowButton
         direction="left"
         onTouch={previousPageFunction}
-        isDisabled={isPreviousPageDisable}
+        isDisabled={isPreviousPageDisabled}
       />
       <Text>
         {`${String(firstItemNumber)} - ${String(lastItemNumber)} of ${String(
-          totalItems,
+          totalItems || 0,
         )}`}
       </Text>
       <ArrowButton

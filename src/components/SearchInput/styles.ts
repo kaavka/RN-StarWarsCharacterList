@@ -11,5 +11,8 @@ export const styles = StyleSheet.create({
     height: 30,
     marginRight: 10,
   },
-  input: {},
+  error: {
+    color: '#ff0000',
+  },
+  input: {flexGrow: 1},
 });
